@@ -11,9 +11,18 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
-        <q-toolbar-title>
-          Corona Risk Calculator
+        <q-toolbar-title class="text-center text-bold">
+          Dashboard
         </q-toolbar-title>
+
+        <q-btn
+          flat
+          dense
+          round
+          icon="replay"
+          aria-label="replay"
+          @click="refresh()"
+        />
       </q-toolbar>
     </q-header>
 
@@ -28,7 +37,8 @@
           header
           class="text-grey-8"
         >
-          Essential Links
+          <div class="menu-img"></div>
+          <div class="text-bold text-center text-black q-mt-md">Cororna Risk Calculator</div>
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -59,43 +69,54 @@ export default {
       leftDrawerOpen: false,
       essentialLinks: [
         {
-          title: 'Docs',
-          caption: 'quasar.dev',
-          icon: 'school',
-          link: 'https://quasar.dev'
+          title: 'Dashboard',
+          caption: 'Application Dashboard',
+          icon: 'dashboard',
+          link: '/',
+          color: '#0b9299'
         },
         {
-          title: 'Github',
-          caption: 'github.com/quasarframework',
-          icon: 'code',
-          link: 'https://github.com/quasarframework'
+          title: 'Quick Checkup',
+          caption: 'Quickly check your symptoms',
+          icon: 'gamepad',
+          link: '/checkup',
+          color: '#30b258'
         },
         {
-          title: 'Discord Chat Channel',
-          caption: 'chat.quasar.dev',
-          icon: 'chat',
-          link: 'https://chat.quasar.dev'
-        },
-        {
-          title: 'Forum',
-          caption: 'forum.quasar.dev',
-          icon: 'record_voice_over',
-          link: 'https://forum.quasar.dev'
-        },
-        {
-          title: 'Twitter',
-          caption: '@quasarframework',
+          title: 'Quick Reference',
+          caption: 'A collection of do\'s dont\'s myths and facts',
           icon: 'rss_feed',
-          link: 'https://twitter.quasar.dev'
+          link: '/reference',
+          color: '#ffb05d'
         },
         {
-          title: 'Facebook',
-          caption: '@QuasarFramework',
-          icon: 'public',
-          link: 'https://facebook.quasar.dev'
+          title: 'About',
+          caption: 'About us information',
+          icon: 'info',
+          link: '/about',
+          color: '#d42b73'
         }
       ]
+    }
+  },
+  methods: {
+    refresh () {
+      window.location.reload()
     }
   }
 }
 </script>
+<style scoped>
+.menu-img {
+  height: 100px;
+  width: 100px;
+  margin: auto;
+  background: url('../statics/app-logo-128x128.svg') no-repeat;
+  margin-top: 50px;
+}
+.menu-txt {
+  color: black;
+  text-align: center;
+}
+
+</style>

@@ -3,13 +3,14 @@
     clickable
     tag="a"
     target="_blank"
-    :href="link"
+    @click="$router.push(link)"
+    class="q-my-md"
   >
     <q-item-section
       v-if="icon"
       avatar
     >
-      <q-icon :name="icon" />
+      <q-icon :name="icon" :style="{'color':color}" />
     </q-item-section>
 
     <q-item-section>
@@ -43,6 +44,11 @@ export default {
     icon: {
       type: String,
       default: ''
+    },
+
+    color: {
+      type: String,
+      default: '#000000'
     }
   }
 }

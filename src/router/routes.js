@@ -4,10 +4,10 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Index.vue') },
-      { path: '/checkup', component: () => import('pages/Checkup.vue') },
-      { path: '/reference', component: () => import('pages/Reference.vue') },
-      { path: '/about', component: () => import('pages/About.vue') }
+      { path: '', name: 'Dashboard', component: () => import('pages/Index.vue') },
+      { path: '/checkup', name: 'Quick Checkup', component: () => import('pages/Checkup.vue') },
+      { path: '/reference', name: 'Quick Reference', component: () => import('pages/Reference.vue') },
+      { path: '/about', name: 'About', component: () => import('pages/About.vue') }
     ]
   }
 ]

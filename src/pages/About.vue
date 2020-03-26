@@ -1,7 +1,9 @@
 <template>
   <q-page>
     <div class="text-bold q-pa-md text-grey">
-      Made this app to give back to the society.
+      Made this app to give back what we can to the society.
+      This is mainly to help hypochondriacs, who are worried if their symptoms are related to the COVID-19 virus infection.
+      Please note that, this app in no way guarentees any accuracy in the results, Consult your doctor at the earliest if symptoms persist.
       Thanks to <a href="https://github.com/ExpDev07/coronavirus-tracker-api" class="text-grey">https://github.com/ExpDev07/coronavirus-tracker-api</a> for providing the dashboard APIs
     </div>
     <q-list class="rounded-borders">

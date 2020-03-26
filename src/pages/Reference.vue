@@ -4,6 +4,7 @@
       <q-img
         src="../statics/sanitize.jpg"
         basic
+        alt="Do's & Dont's"
       />
       <q-card-section>
         <div class="text-h6">Do's & Dont's</div>
@@ -139,7 +140,12 @@
           </q-btn>
         </q-bar>
         <q-card-section class="q-pt-none">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum repellendus sit voluptate voluptas eveniet porro. Rerum blanditiis perferendis totam, ea at omnis vel numquam exercitationem aut, natus minima, porro labore.
+          <ul class="list">
+            <li><a href="https://www.bing.com/covid" target="_blank">https://www.bing.com/covid</a></li>
+            <li><a href="https://www.worldometers.info/coronavirus/" target="_blank">https://www.worldometers.info/coronavirus/</a></li>
+            <li><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019" target="_blank">https://www.who.int/emergencies/diseases/novel-coronavirus-2019</a></li>
+            <li><a href="https://www.covid19india.org/" target="_blank">https://www.covid19india.org/</a></li>
+          </ul>
         </q-card-section>
       </q-card>
     </q-dialog>
@@ -161,5 +167,17 @@ export default {
 <style lang="scss" scoped>
 .my-card {
   margin-bottom: 20px;
+}
+.list {
+  padding-left: 15px;
+  color: white;
+  li {
+    overflow-wrap: break-word;
+  }
+  a {
+    color: white !important;
+    text-decoration: none;
+    font-size: 20px;
+  }
 }
 </style>

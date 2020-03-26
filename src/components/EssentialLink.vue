@@ -2,8 +2,9 @@
   <q-item
     clickable
     tag="a"
-    target="_blank"
-    @click="$router.push(link)"
+    :to="link"
+    exact
+    active-class="highlight"
     class="q-my-md"
   >
     <q-item-section
@@ -53,3 +54,12 @@ export default {
   }
 }
 </script>
+<style lang="scss" scoped>
+.highlight {
+  background: #4e4e4e;
+  pointer-events: none;
+  .q-item__label {
+    color: white;
+  }
+}
+</style>

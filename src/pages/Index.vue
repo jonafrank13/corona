@@ -3,26 +3,27 @@
     <div class="q-my-md text-bold text-black">COVID-19 Outbreak Situation</div>
     <div class="dash-box">
       <div class="box-1">
-        <div class="box-title text-bold text-center">Cases</div>
+        <div class="box-title text-bold text-center">Total Cases</div>
         <div class="box-data text-center">{{formatNumber(cases)}}</div>
         <div class="box-title-sm text-center">Updated: {{last_updated}}</div>
       </div>
       <div class="box-2">
-        <div class="box-title text-bold text-center">Recoveries</div>
+        <div class="box-title text-bold text-center">Total Recoveries</div>
         <div class="box-data text-center">{{formatNumber(recoveries)}}</div>
         <div class="box-title-sm text-center">Updated: {{last_updated}}</div>
       </div>
       <div class="box-3">
-        <div class="box-title text-bold text-center">Deaths</div>
+        <div class="box-title text-bold text-center">Total Deaths</div>
         <div class="box-data text-center">{{formatNumber(deaths)}}</div>
         <div class="box-title-sm text-center">Updated: {{last_updated}}</div>
       </div>
       <div class="box-4">
-        <div class="box-title text-bold text-center">Serious/Critical</div>
-        <div class="box-data text-center">{{formatNumber(serious)}}</div>
-        <div class="box-title-sm text-center">Updated: {{last_updated}}</div>
+        <div class="box-title text-bold text-center">Worst Hit</div>
+        <div class="box-data text-center">{{max_hit}}</div>
+        <div class="box-title-sm text-center">Death Count: {{formatNumber(max_hit_count)}}</div>
       </div>
     </div>
+    <div class="q-md-md text-bold text-grey">Source: JHU CSSE</div>
     <div class="q-my-md text-bold text-black">Worldwide Cases</div>
     <q-table
       :data="data"
@@ -41,7 +42,8 @@ export default {
       cases: 10000,
       recoveries: 2000,
       deaths: 5000,
-      serious: 3000,
+      max_hit: 'China',
+      max_hit_count: 6000,
       last_updated: '12th Mar 2020, 07:00 AM',
       data: [],
       columns: [
@@ -51,7 +53,7 @@ export default {
         { name: 'recovered', align: 'center', label: 'Recoveries', field: row => row.latest.recovered, sortable: true },
         { name: 'city', align: 'left', label: 'City', field: 'city', sortable: true },
         { name: 'province', align: 'left', label: 'Province', field: 'province', sortable: true },
-        { name: 'last_updated', label: 'Last Updated', field: 'last_updated', sortable: true }
+        { name: 'last_updated', label: 'Last Updated', field: 'last_updated', format: val => { return (new Date(val)).toString() }, sortable: true }
       ]
     }
   },
@@ -65,10 +67,14 @@ export default {
         this.cases = resp[0].data.cases
         this.deaths = resp[0].data.deaths
         this.recoveries = resp[0].data.recovered
-        this.serious = this.cases - this.deaths - this.recoveries
         this.last_updated = (new Date()).toDateString()
 
         this.data = resp[1].data.locations
+        const maxDeathCountry = this.data.sort((elm1, elm2) => {
+          return elm2.latest.deaths - elm1.latest.deaths
+        })[0]
+        this.max_hit = maxDeathCountry.country
+        this.max_hit_count = maxDeathCountry.latest.deaths
       }).catch(() => {
         this.$q.notify({
           color: 'negative',

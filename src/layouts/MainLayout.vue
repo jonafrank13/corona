@@ -12,7 +12,7 @@
         />
 
         <q-toolbar-title class="text-center text-bold">
-          Dashboard
+          {{$route.name}}
         </q-toolbar-title>
 
         <q-btn
@@ -49,7 +49,14 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <transition
+        name="transitions"
+        enter-active-class="animated flipInY"
+        leave-active-class="animated flipOutY"
+        mode="out-in"
+      >
+        <router-view />
+      </transition>
     </q-page-container>
   </q-layout>
 </template>

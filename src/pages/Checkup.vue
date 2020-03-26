@@ -170,7 +170,7 @@ export default {
       symptoms: [],
       conditions: [],
       travel: null,
-      result_dialog: true,
+      result_dialog: false,
       risk_percentage: 0
     }
   },

@@ -3,12 +3,11 @@
     <q-card class="my-card" v-ripple @click="dialog_1 = true">
       <q-img
         src="../statics/sanitize.jpg"
-        basic
-        alt="Do's & Dont's"
+        alt="Dos & Dont's"
       />
       <q-card-section>
-        <div class="text-h6">Do's & Dont's</div>
-        <div class="text-subtitle2">Check out the list of do's and dont's</div>
+        <div class="text-h6">Dos & Dont's</div>
+        <div class="text-subtitle2">Check out the list of dos and dont's</div>
       </q-card-section>
     </q-card>
     <q-dialog
@@ -20,14 +19,14 @@
     >
       <q-card class="bg-primary text-white">
         <q-bar>
-          <div class="text-h6">Do's & Dont's</div>
+          <div class="text-h6">Dos & Dont's</div>
           <q-space />
           <q-btn dense flat icon="close" v-close-popup>
             <q-tooltip content-class="bg-white text-primary">Close</q-tooltip>
           </q-btn>
         </q-bar>
         <q-card-section class="q-pt-none">
-          <div class="text-bold text-h6">Do's</div>
+          <div class="text-bold text-h6">Dos</div>
           <ul>
             <li>Self-isolate and stay at home for seven days if you develop symptoms: a new continuous cough and/or high temperature. A high temperature means you feel hot to touch on your chest or back; a new, continuous cough means coughing a lot for more than an hour or three or more coughing episodes in 24 hours.</li>
             <li>Stay at home for 14 days if you live in a household where someone has the symptoms of coronavirus. This longer period is because it can take 14 days for symptoms to appear and you will not know initially whether or not you are infected. If you then develop symptoms, stay at home for a further seven days even if that means you stay at home in total for longer than 14 days of isolation.</li>
@@ -57,7 +56,6 @@
     <q-card class="my-card" @click="dialog_2 = true" v-ripple>
       <q-img
         src="../statics/covid19.jpg"
-        basic
       />
       <q-card-section>
         <div class="text-h6">Facts & Myths</div>
@@ -117,7 +115,6 @@
     <q-card class="my-card" @click="dialog_3 = true" v-ripple>
       <q-img
         src="../statics/facts.jpg"
-        basic
       />
       <q-card-section>
         <div class="text-h6">Useful Links</div>

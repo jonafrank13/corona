@@ -1,6 +1,6 @@
 <template>
   <q-page class="q-pa-sm">
-    <div class="q-my-md text-bold text-black">COVID-19 Outbreak Situation</div>
+    <div class="q-my-md text-bold text-black text-h6">COVID-19 Outbreak Situation</div>
     <div class="dash-box">
       <div class="box-1">
         <div class="box-title text-bold text-center">Total Cases</div>
@@ -24,13 +24,29 @@
       </div>
     </div>
     <div class="q-md-md text-bold text-grey">Source: JHU CSSE</div>
-    <div class="q-my-md text-bold text-black">Worldwide Cases</div>
+    <div class="q-my-md text-bold text-black text-h6">Worldwide Cases</div>
     <q-table
       :data="data"
       :columns="columns"
+      :filter="filter"
+      :filter-method="filterMethod"
       row-key="id"
       flat
-    />
+    >
+      <template v-slot:top-right="props">
+        <q-input borderless dense debounce="300" v-model="filter" placeholder="Search">
+          <template v-slot:append>
+            <q-icon name="search" />
+          </template>
+        </q-input>
+        <q-btn
+          flat round dense
+          :icon="props.inFullscreen ? 'fullscreen_exit' : 'fullscreen'"
+          @click="props.toggleFullscreen"
+          class="q-ml-md"
+        />
+      </template>
+    </q-table>
   </q-page>
 </template>
 
@@ -45,12 +61,13 @@ export default {
       max_hit: 'China',
       max_hit_count: 6000,
       last_updated: '12th Mar 2020, 07:00 AM',
+      filter: '',
       data: [],
       columns: [
         { name: 'country', required: true, label: 'Country', field: 'country', align: 'left', sortable: true },
         { name: 'confirmed', align: 'center', label: 'Cases', field: row => row.latest.confirmed, sortable: true },
         { name: 'deaths', align: 'center', label: 'Deaths', field: row => row.latest.deaths, sortable: true },
-        { name: 'recovered', align: 'center', label: 'Recoveries', field: row => row.latest.recovered, sortable: true },
+        // { name: 'recovered', align: 'center', label: 'Recoveries', field: row => row.latest.recovered, sortable: true },
         { name: 'city', align: 'left', label: 'City', field: 'city', sortable: true },
         { name: 'province', align: 'left', label: 'Province', field: 'province', sortable: true },
         { name: 'last_updated', label: 'Last Updated', field: 'last_updated', format: val => { return (new Date(val)).toString() }, sortable: true }
@@ -88,6 +105,11 @@ export default {
     },
     formatNumber (value) {
       return new Intl.NumberFormat().format(value)
+    },
+    filterMethod (rows, terms, cols) {
+      return rows.filter((row) => {
+        return (row.country.toLowerCase().indexOf(terms) > -1)
+      })
     }
   },
   mounted () {

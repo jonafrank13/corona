@@ -51,8 +51,8 @@
     <q-page-container>
       <transition
         name="transitions"
-        enter-active-class="animated flipInY"
-        leave-active-class="animated flipOutY"
+        enter-active-class="animated slideInLeft"
+        leave-active-class="animated slideOutRight"
         mode="out-in"
       >
         <router-view />

@@ -149,6 +149,11 @@
                 <q-item-label caption>Please note that these are only indicative results, Contact a doctor immediately if symptoms persists/becomes worse</q-item-label>
               </q-item-section>
             </q-item>
+            <q-item>
+              <q-item-section>
+                <q-item-label caption>This is for informational purposes only and I am not a doctor but incorporated available statistical knowledge that was incorporated to calculate the risk and provide our best efforts to a resource intended to inform people who may otherwise spend inordinate time worrying or stressing over this pandemic.  This our little contribution to try and help bring some concise truths to bare in this time where good information may be in short supply.  Namaste!</q-item-label>
+              </q-item-section>
+            </q-item>
           </q-list>
         </q-card-section>
       </q-card>
